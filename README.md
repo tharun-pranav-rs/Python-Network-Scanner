@@ -40,11 +40,9 @@ Open Scanner.py and paste your Discord Webhook URL.
 Set the TARGET_IP (Default is 127.0.0.1).
 
 Run the auditor:
-
-
 python Scanner.py
-
 
 ### 🛡️ Disclaimer
 **This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.**
+
 
