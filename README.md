@@ -33,14 +33,18 @@ Run the auditor:
 python Scanner.py
 
 📸 Demo
-<img width="443" height="184" alt="Screenshot 2026-01-22 125108" src="https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786" />
+## 📸 Demo
 
+![Scan Alert Demo](https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786)
 
-<img width="456" height="184" alt="Screenshot 2026-01-22 125141" src="https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5" />
+![Scan Alert Details](https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5)
+
+<br>
 
 
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
+
 
 
 
