@@ -6,7 +6,15 @@ A Python-based automated security auditing tool that actively probes network inf
 ![Security](https://img.shields.io/badge/Security-Network%20Auditing-red)
 
 <br>
+## 📸 Demo
 
+![Screenshot 1](https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786)
+
+<br>
+
+![Screenshot 2](https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5)
+
+<br>
 ## ⚡ Key Capabilities
 
 * **Active Port Scanning:** Utilizes raw TCP Sockets to perform "Connect" scans on target infrastructure.
@@ -35,15 +43,8 @@ Run the auditor:
 
 
 python Scanner.py
-## 📸 Demo
 
-![Screenshot 1](https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786)
-
-<br>
-
-![Screenshot 2](https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5)
-
-<br>
 
 ### 🛡️ Disclaimer
 **This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.**
+
