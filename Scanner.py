@@ -1,92 +1,79 @@
+import socket
+import time
 import requests
 import json
-import datetime
-import time
-import socket
+import os
 
 # ---------------- CONFIGURATION ---------------- #
-# 1. PASTE YOUR WEBHOOK URL HERE
+# If running in Docker, this environment variable will override the default
+TARGET_IP = os.getenv("TARGET_IP", "127.0.0.1")
+
+# PORTS TO SCAN (Common vulnerable services)
+PORTS_TO_SCAN = [21, 22, 80, 445, 3306, 8000, 8080]
+
+# PASTE YOUR DISCORD WEBHOOK URL HERE
 WEBHOOK_URL = "https://discord.com/api/webhooks/1463746861788565596/lm8JvzY3cbf-c_d02lrzoZr0Ikky1aDJAdhprMoqiJH5ea9E73RqPmTUrx_Xo3ywiHux"
+# ----------------------------------------------- #
 
-# 2. Target IP (Localhost)
-TARGET_IP = "127.0.0.1" 
+def send_discord_alert(port, service_name):
+    """Sends a critical alert to Discord."""
+    if "YOUR_WEBHOOK_URL" in WEBHOOK_URL:
+        print("⚠️ Discord Webhook not configured. Skipping alert.")
+        return
 
-# 3. Ports to scan
-PORTS_TO_SCAN = [21, 22, 80, 445, 3306, 8000]
-
-# ---------------- THE ALERT FUNCTION ---------------- #
-def send_security_alert(title, description, severity="INFO", port="N/A"):
-    colors = {
-        "INFO": 3447003,      # Blue
-        "WARNING": 16776960,  # Yellow
-        "CRITICAL": 15158332  # Red
-    }
-    
-    # FIXED: Updated timestamp format to remove warning
-    timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    
-    payload = {
-        "username": "Vulnerability Scanner",
-        "avatar_url": "https://i.imgur.com/4M34hi2.png",
+    data = {
         "embeds": [{
-            "title": f"🚨 {title}",
-            "description": description,
-            "color": colors.get(severity, 3447003),
-            "timestamp": timestamp,
+            "title": "🚨 Open Port Detected!",
+            "description": f"Port **{port}** ({service_name}) is exposed on **{TARGET_IP}**.",
+            "color": 15548997,  # Red color
             "fields": [
-                {"name": "Target IP", "value": f"`{TARGET_IP}`", "inline": True},
-                {"name": "Port", "value": f"**{port}**", "inline": True}
-            ]
+                {"name": "Target IP", "value": TARGET_IP, "inline": True},
+                {"name": "Port", "value": str(port), "inline": True},
+                {"name": "Action Required", "value": "Check firewall rules immediately."}
+            ],
+            "footer": {"text": "Python Network Scanner • Security Alert"}
         }]
     }
-
     try:
-        response = requests.post(WEBHOOK_URL, data=json.dumps(payload), headers={"Content-Type": "application/json"})
-        # ADDED: Feedback so you know it worked
-        if response.status_code == 204:
-            print("  ✅ Alert sent to Discord!")
-        else:
-            print(f"  ❌ Failed to send alert: {response.status_code}")
+        requests.post(WEBHOOK_URL, json=data)
+        print(f"   [+] Alert sent to Discord for Port {port}")
     except Exception as e:
-        print(f"  ❌ Error: {e}")
+        print(f"   [-] Failed to send alert: {e}")
 
-# ---------------- THE PORT SCANNER ---------------- #
 def check_port(ip, port):
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(0.5) # Faster timeout
-        result = sock.connect_ex((ip, port))
-        sock.close()
-        return result == 0
-    except:
-        return False
+    """Tries to connect to a specific port."""
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(1)  # 1 second timeout
+    result = sock.connect_ex((ip, port))
+    sock.close()
+    return result == 0
 
-# ---------------- MAIN LOOP ---------------- #
-print(f"🛡️ vulnerability_scanner.py started on {TARGET_IP}...")
-print("Press Ctrl+C to stop.")
-
-while True:
-    print(f"\n🔍 Scanning {TARGET_IP}...")
+def start_scan():
+    print(f"\n🔍 Scanning Target: {TARGET_IP}...")
     
+    found_open = False
     for port in PORTS_TO_SCAN:
-        print(f"  > Checking Port {port}...", end="")
-        
+        print(f" > Checking Port {port}...", end="\r")
         if check_port(TARGET_IP, port):
-            print(f" OPEN! 🚨")
-            
-            # Determine Severity
-            severity = "INFO"
-            if port in [21, 22, 445, 3306]:
-                severity = "CRITICAL"
-                
-            send_security_alert(
-                title="Open Port Detected",
-                description=f"Port **{port}** is exposed. Check firewall rules immediately.",
-                severity=severity,
-                port=port
-            )
+            print(f" > Checking Port {port}... 🔓 OPEN!      ")
+            send_discord_alert(port, "Unknown Service")
+            found_open = True
         else:
-            print(" Closed.")
-            
-    print("Scan complete. Sleeping for 60 seconds...")
-    time.sleep(60)
+            # Overwrite the line to keep terminal clean
+            print(f" > Checking Port {port}... Closed.     ")
+    
+    if not found_open:
+        print("✅ No open ports found.")
+
+if __name__ == "__main__":
+    print(f"🛡️ Vulnerability Scanner started...")
+    print(f"🎯 Configuration: Scans {TARGET_IP} every 60 seconds.")
+    print("Press Ctrl+C to stop.\n")
+    
+    try:
+        while True:
+            start_scan()
+            print("\nScan complete. Sleeping for 60 seconds...")
+            time.sleep(60)
+    except KeyboardInterrupt:
+        print("\n🛑 Scanner stopped by user.")
