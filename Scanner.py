@@ -12,7 +12,7 @@ TARGET_IP = os.getenv("TARGET_IP", "127.0.0.1")
 PORTS_TO_SCAN = [21, 22, 80, 445, 3306, 8000, 8080]
 
 # PASTE YOUR DISCORD WEBHOOK URL HERE
-WEBHOOK_URL = "https://discord.com/api/webhooks/1463746861788565596/lm8JvzY3cbf-c_d02lrzoZr0Ikky1aDJAdhprMoqiJH5ea9E73RqPmTUrx_Xo3ywiHux"
+WEBHOOK_URL = "YOUR_WEBHOOK"
 # ----------------------------------------------- #
 
 def send_discord_alert(port, service_name):
@@ -59,6 +59,7 @@ def start_scan():
             send_discord_alert(port, "Unknown Service")
             found_open = True
         else:
+<<<<<<< HEAD
             # Overwrite the line to keep terminal clean
             print(f" > Checking Port {port}... Closed.     ")
     
@@ -77,3 +78,9 @@ if __name__ == "__main__":
             time.sleep(60)
     except KeyboardInterrupt:
         print("\n🛑 Scanner stopped by user.")
+=======
+            print(" Closed.")
+            
+    print("Scan complete. Sleeping for 60 seconds...")
+    time.sleep(60)
+>>>>>>> cbffaa59b918c8195273b2fcc71ac538678c4717
