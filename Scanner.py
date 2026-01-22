@@ -6,7 +6,7 @@ import socket
 
 # ---------------- CONFIGURATION ---------------- #
 # 1. PASTE YOUR WEBHOOK URL HERE
-WEBHOOK_URL = "https://discord.com/api/webhooks/1463746861788565596/lm8JvzY3cbf-c_d02lrzoZr0Ikky1aDJAdhprMoqiJH5ea9E73RqPmTUrx_Xo3ywiHux"
+WEBHOOK_URL = "YOUR WEBHOOK URL"
 
 # 2. Target IP (Localhost)
 TARGET_IP = "127.0.0.1" 
