@@ -35,15 +35,18 @@ python Scanner.py
 📸 Demo
 ## 📸 Demo
 
-![Scan Alert Demo](https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786)
+![Screenshot 1](https://github.com/user-attachments/assets/5d0bba90-8532-480f-a062-9666c6893786)
 
-![Scan Alert Details](https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5)
+<br>
+
+![Screenshot 2](https://github.com/user-attachments/assets/9d1840c5-1980-4d15-a8d6-cdf36c01ecc5)
 
 <br>
 
 
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
+
 
 
 
