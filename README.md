@@ -37,7 +37,7 @@ Run the scanner in an isolated container without installing Python manually.
 docker build -t vuln-scanner .
 
 2. Run the Scanner
-=======
+
 ### 2. Run the Scanner
 
 docker run -e TARGET_IP="host.docker.internal" --add-host=host.docker.internal:host-gateway vuln-scanner
@@ -63,6 +63,7 @@ python Scanner.py
 
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
+
 
 
 
