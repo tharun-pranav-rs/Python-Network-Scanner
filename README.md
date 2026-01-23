@@ -47,8 +47,6 @@ docker run -e TARGET_IP="host.docker.internal" --add-host=host.docker.internal:h
 git clone [https://github.com/tharun-pranav-rs/Python-Network-Scanner.git](https://github.com/tharun-pranav-rs/Python-Network-Scanner.git)
 cd Python-Network-Scanner
 
-=======
-
 2. Install Dependencies
 pip install -r requirements.txt
 
@@ -60,12 +58,12 @@ Set the TARGET_IP (Default is 127.0.0.1).
 
 Run the auditor: python Scanner.py
 
-=======
 Run the auditor:
 python Scanner.py
 
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
+
 
 
 
