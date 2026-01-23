@@ -10,11 +10,14 @@ A Python-based automated security auditing tool that actively probes network inf
 
 📸 Demo
 
-![alt text](<Screenshot 2026-01-22 125108.png>)
+<img width="443" height="184" alt="Screenshot 2026-01-22 125108" src="https://github.com/user-attachments/assets/9fbde74e-1b55-4d90-98db-5ff514ac85ae" />
 
-![alt text](<Screenshot 2026-01-22 125141.png>)
 
-![alt text](<Screenshot 2026-01-22 204100.png>)
+<img width="456" height="184" alt="Screenshot 2026-01-22 125141" src="https://github.com/user-attachments/assets/4c14b8ea-6455-4175-aaee-8f85ef7c4424" />
+
+
+<img width="607" height="285" alt="Screenshot 2026-01-22 204100" src="https://github.com/user-attachments/assets/8689afa0-d1cc-4905-9014-b10f96972411" />
+
 
 ## ⚡ Key Capabilities
 
@@ -69,3 +72,4 @@ python Scanner.py
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
 >>>>>>> 74273a958cc5e485a875dcb1dc3b866dd8f3334a
+
