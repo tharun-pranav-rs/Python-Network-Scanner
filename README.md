@@ -35,22 +35,20 @@ Run the scanner in an isolated container without installing Python manually.
 ### 1. Build the Image
 ```bash
 docker build -t vuln-scanner .
-<<<<<<< HEAD
 
 2. Run the Scanner
 =======
 ### 2. Run the Scanner
->>>>>>> 74273a958cc5e485a875dcb1dc3b866dd8f3334a
+
 docker run -e TARGET_IP="host.docker.internal" --add-host=host.docker.internal:host-gateway vuln-scanner
 
 🛠️ Manual Usage
 1. Clone the Repository
 git clone [https://github.com/tharun-pranav-rs/Python-Network-Scanner.git](https://github.com/tharun-pranav-rs/Python-Network-Scanner.git)
 cd Python-Network-Scanner
-<<<<<<< HEAD
 
 =======
->>>>>>> 74273a958cc5e485a875dcb1dc3b866dd8f3334a
+
 2. Install Dependencies
 pip install -r requirements.txt
 
@@ -63,13 +61,12 @@ Set the TARGET_IP (Default is 127.0.0.1).
 <<<<<<< HEAD
 Run the auditor: python Scanner.py
 
-🛡️ Disclaimer
-This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
 =======
 Run the auditor:
 python Scanner.py
 
 🛡️ Disclaimer
 This tool is intended for defensive security purposes only. Ensure you have authorization before scanning any network.
->>>>>>> 74273a958cc5e485a875dcb1dc3b866dd8f3334a
+
+
 
